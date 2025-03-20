@@ -10,7 +10,7 @@ const useFetch = (url, options) => {
         () => {
             if (!url) return;
 
-            const controller = new AbortController(); 
+            const controller = new AbortController();//Controller para funcionalidade de controlar a conexao de 1 ou mais requisições.
             const { signal } = controller; 
 
             const fetchData = async () => {
@@ -21,10 +21,10 @@ const useFetch = (url, options) => {
                     const response = await fetch(url, {...options, signal});
                     if (!response.ok) {
                         const errorData = await response.json();
-                        throw new Error(errorData.error || `Error ${error}`)
+                        throw new Error(errorData.error || `Error ${response.status}`)
                     }
                     const data = await response.json();
-                    setData(data)
+                    setData(data);
                 } catch (error) {
                     if (error.name !== "AbortError") {
                         setError(error.message);
@@ -33,6 +33,9 @@ const useFetch = (url, options) => {
                     setLoading(false)
                 }
             } 
+            fetchData();
+
+            return () => controller.abort();
 
         }, [url, options]
     );
