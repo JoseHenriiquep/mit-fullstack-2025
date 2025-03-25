@@ -11,6 +11,9 @@ import Home from './components/Home';
 //MIT 2025.2
 import Data from './components/Data/Data';
 import UserAxios from './components/UsersAxios';
+import StateStudy from './components/Data/StateStudy';
+import Icons from './components/Icons';
+import Store from './components/Store'
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
             <Route path='/feedback' element={<Feedback/>}/>
             <Route path='/data' element={<Data/>}/>
             <Route path='/users-axios' element={<UserAxios/>}/>
+            <Route path='/state-study' element={<StateStudy/>}/>
+            <Route path='/icons' element={<Icons/>}/>
+            <Route path='/store' element={<Store/>}/>
           </Routes>
         </Container>
         <footer className='bg-dark text-white text-center p-3'>

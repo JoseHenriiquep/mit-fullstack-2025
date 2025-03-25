@@ -20,9 +20,22 @@ export const fetchUsers = async () => {
     }
 };
 
-export const updateUser = async () => {};
+export const fetchUsersId = async (id) => {
+    try {
+        const response = await api.get(`/users/${id}`)
+        return response.data;
+    } catch (error) {
+        console.log("Erro ao buscar o usuário: ", error.message);
+        throw error;
+    }
+};
 
-export const deleteUser = async () => {};
+export const updateUser = async () => {
+};
+
+export const deleteUser = async () => {
+    
+};
 
 export const login = async (credentials) => {
     try {
