@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useEffect } from "react";
 
 const CartContext = createContext();
 
-const initialState = JSON.parse(localStorage.getItem("cart")) ||  [];
+const initialState = JSON.parse(localStorage.getItem("cart")) || [];
 
 const cartReducer = (state, action) => {
     switch (action.type) {
@@ -23,7 +23,7 @@ export const CartProvider = ({ children }) => {
     const [cart, dispatch] = useReducer(cartReducer, initialState);
 
     useEffect(() => {
-        localStorage.setItem("cart", JSON.parse(cart));
+        localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart])
 
     return(
@@ -33,4 +33,4 @@ export const CartProvider = ({ children }) => {
     )
 }
 
-export default useCart = () => React.useContext(CartContext);
+export const useCart = () => React.useContext(CartContext);
