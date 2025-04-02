@@ -32,14 +32,14 @@ const Cart = () => {
             ) : (
                 <div>
                 {cart.map((item) => (
-                    <>
-                    <Product item={item} onChange={(id, q) => dispatch(updateQuantity({ id, quantity: q }))} />
-                    <button onClick={() => dispatch(removeFromCart(item.id))}>
-                        Remover do Carrinho
-                    </button>
-                    </>
+                    <React.Fragment key={item.id}>
+                        <Product item={item} onChange={(id, q) => dispatch(updateQuantity({ id, quantity: q }))} />
+                        <button onClick={() => dispatch(removeFromCart(item.id))}>
+                            Remover do Carrinho
+                        </button>
+                    </React.Fragment>
                 ))}
-                <button onClick={dispatch(clearCart())} style={{backgroundColor: "red"}}>Limpar Carrinho</button>
+                <button onClick={() => dispatch(clearCart())} style={{backgroundColor: "red"}}>Limpar Carrinho</button>
                 </div>
             )
             }
